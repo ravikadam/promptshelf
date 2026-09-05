@@ -4,10 +4,10 @@ PromptShelf is a small, offline desktop app for saving, finding, filling and cop
 
 | Computer | Download |
 | --- | --- |
-| Mac with Apple Silicon (M1/M2/M3/M4 or later) | `PromptShelf-1.0.0-mac-arm64.dmg` |
-| Mac with an Intel processor | `PromptShelf-1.0.0-mac-x64.dmg` |
-| Windows PC (Intel/AMD, 64-bit) | `PromptShelf-1.0.0-win-x64.exe` |
-| Linux PC (Intel/AMD, 64-bit) | `PromptShelf-1.0.0-linux-x64.AppImage` |
+| Mac with Apple Silicon (M1/M2/M3/M4 or later) | `PromptShelf-1.0.1-mac-arm64.dmg` |
+| Mac with an Intel processor | `PromptShelf-1.0.1-mac-x64.dmg` |
+| Windows PC (Intel/AMD, 64-bit) | `PromptShelf-1.0.1-win-x64.exe` |
+| Linux PC (Intel/AMD, 64-bit) | `PromptShelf-1.0.1-linux-x64.AppImage` |
 
 Download the installer for your computer from **Assets** below. GitHub's “Source code” archives are for developers. `SHA256SUMS.txt` contains the installer checksums.
 
@@ -15,7 +15,7 @@ Download the installer for your computer from **Assets** below. GitHub's “Sour
 
 - **macOS:** Open the DMG and drag PromptShelf into Applications. This community build is ad-hoc signed, not Apple-notarized. If macOS blocks it, follow [Apple's instructions for apps from an unidentified developer](https://support.apple.com/en-gb/102445), only if you trust this download. Do not disable Gatekeeper globally.
 - **Windows:** Open the `.exe` installer. This build is unsigned, so Windows may show an unknown-publisher or SmartScreen warning. Only proceed if you trust this release.
-- **Linux:** Make the AppImage executable (`chmod +x PromptShelf-1.0.0-linux-x64.AppImage`) and launch it. Your distribution may need FUSE support. If sandbox restrictions prevent launch, report your distribution and error; do not disable the sandbox as a workaround.
+- **Linux:** Make the AppImage executable (`chmod +x PromptShelf-1.0.1-linux-x64.AppImage`) and launch it. Your distribution may need FUSE support. If sandbox restrictions prevent launch, report your distribution and error; do not disable the sandbox as a workaround.
 
 ### What to try
 
