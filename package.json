@@ -1,0 +1,80 @@
+{
+  "name": "promptshelf",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A local home for reusable AI prompts",
+  "author": "Ravi Kadam",
+  "main": "dist-electron/electron/main.js",
+  "scripts": {
+    "dev": "npm run build:electron && concurrently -k \"vite --host 127.0.0.1\" \"wait-on http://127.0.0.1:5173 && electron . --dev\"",
+    "build:electron": "tsc -p tsconfig.electron.json",
+    "build": "tsc --noEmit && vite build && npm run build:electron",
+    "start": "electron .",
+    "test": "tsx --test tests/*.test.ts",
+    "test:e2e": "npm run build && playwright test",
+    "package": "npm run build && electron-builder",
+    "package:dir": "npm run build && electron-builder --dir",
+    "format": "prettier --write src electron tests scripts .github *.json *.ts *.html *.md",
+    "format:check": "prettier --check src electron tests scripts .github *.json *.ts *.html *.md"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^4.4.0",
+    "concurrently": "^9.1.0",
+    "electron": "^44.2.0",
+    "electron-builder": "^26.0.12",
+    "prettier": "^3.9.6",
+    "tsx": "^4.20.0",
+    "typescript": "^5.8.0",
+    "vite": "^6.3.0",
+    "wait-on": "^8.0.0"
+  },
+  "build": {
+    "appId": "app.promptshelf.desktop",
+    "productName": "PromptShelf",
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "category": "public.app-category.productivity",
+      "identity": "-"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Utility"
+    },
+    "artifactName": "PromptShelf-${version}-${os}-${arch}.${ext}",
+    "icon": "build/icon.png"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ravikadam/promptshelf.git"
+  },
+  "homepage": "https://github.com/ravikadam/promptshelf",
+  "bugs": {
+    "url": "https://github.com/ravikadam/promptshelf/issues"
+  }
+}

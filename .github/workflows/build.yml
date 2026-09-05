@@ -1,0 +1,81 @@
+name: Build and release
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    name: ${{ matrix.name }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: macOS Apple Silicon
+            os: macos-15
+            platform: mac
+            arch: arm64
+          - name: macOS Intel
+            os: macos-15-intel
+            platform: mac
+            arch: x64
+          - name: Windows
+            os: windows-latest
+            platform: win
+            arch: x64
+          - name: Linux
+            os: ubuntu-24.04
+            platform: linux
+            arch: x64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run format:check
+      - run: npm test
+      - run: npm run build
+      - name: Desktop acceptance test (macOS)
+        if: runner.os == 'macOS'
+        run: npx playwright test
+      - name: Build installer
+        run: npx electron-builder --${{ matrix.platform }} --${{ matrix.arch }} --publish never
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: "false"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PromptShelf-${{ matrix.platform }}-${{ matrix.arch }}
+          if-no-files-found: error
+          path: |
+            release/*.dmg
+            release/*.exe
+            release/*.AppImage
+  release:
+    name: Publish downloads
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: installers
+          merge-multiple: true
+      - name: Publish release with checksums
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd installers
+          sha256sum * > SHA256SUMS.txt
+          gh release create "$GITHUB_REF_NAME" ./* --repo "$GITHUB_REPOSITORY" --verify-tag --title "PromptShelf $GITHUB_REF_NAME" --notes-file ../docs/RELEASE_NOTES.md --latest
