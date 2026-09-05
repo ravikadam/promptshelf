@@ -2,12 +2,12 @@ PromptShelf is a small, offline desktop app for saving, finding, filling and cop
 
 ### Choose your download
 
-| Computer | Download |
-| --- | --- |
-| Mac with Apple Silicon (M1/M2/M3/M4 or later) | `PromptShelf-1.0.1-mac-arm64.dmg` |
-| Mac with an Intel processor | `PromptShelf-1.0.1-mac-x64.dmg` |
-| Windows PC (Intel/AMD, 64-bit) | `PromptShelf-1.0.1-win-x64.exe` |
-| Linux PC (Intel/AMD, 64-bit) | `PromptShelf-1.0.1-linux-x64.AppImage` |
+| Computer                                      | Download                               |
+| --------------------------------------------- | -------------------------------------- |
+| Mac with Apple Silicon (M1/M2/M3/M4 or later) | `PromptShelf-1.0.1-mac-arm64.dmg`      |
+| Mac with an Intel processor                   | `PromptShelf-1.0.1-mac-x64.dmg`        |
+| Windows PC (Intel/AMD, 64-bit)                | `PromptShelf-1.0.1-win-x64.exe`        |
+| Linux PC (Intel/AMD, 64-bit)                  | `PromptShelf-1.0.1-linux-x64.AppImage` |
 
 Download the installer for your computer from **Assets** below. GitHub's “Source code” archives are for developers. `SHA256SUMS.txt` contains the installer checksums.
 
