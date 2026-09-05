@@ -25,12 +25,12 @@ PromptShelf saves reusable AI prompts on your computer. Organise them by categor
 
 Choose an installer from the release's **Assets** section. You do not need Node.js or any developer tools to use it.
 
-| Your computer                         | File to download                   |
-| ------------------------------------- | ---------------------------------- |
-| macOS — Apple Silicon (M-series chip) | `PromptShelf-…-mac-arm64.dmg`      |
-| macOS — Intel                         | `PromptShelf-…-mac-x64.dmg`        |
-| Windows — Intel/AMD, 64-bit           | `PromptShelf-…-win-x64.exe`        |
-| Linux — Intel/AMD, 64-bit             | `PromptShelf-…-linux-x64.AppImage` |
+| Your computer                         | File to download                      |
+| ------------------------------------- | ------------------------------------- |
+| macOS — Apple Silicon (M-series chip) | `PromptShelf-…-mac-arm64.dmg`         |
+| macOS — Intel                         | `PromptShelf-…-mac-x64.dmg`           |
+| Windows — Intel/AMD, 64-bit           | `PromptShelf-…-win-x64.exe`           |
+| Linux — Intel/AMD, 64-bit             | `PromptShelf-…-linux-x86_64.AppImage` |
 
 - **Mac:** Open the DMG, then drag PromptShelf into Applications. Check **Apple menu → About This Mac** if you are unsure which chip you have.
 - **Windows:** Run the `.exe` installer and follow the prompts.
