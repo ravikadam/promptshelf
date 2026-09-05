@@ -42,6 +42,37 @@ Each release includes `SHA256SUMS.txt` so you can check downloaded files. Update
 
 **Test coverage:** locally tested on macOS Apple Silicon, including the packaged app. CI builds all four targets and runs desktop acceptance tests on macOS. Windows/Linux installation and day-to-day use are not yet manually verified. See [verification details](VERIFICATION.md) and the [build runs](https://github.com/ravikadam/promptshelf/actions).
 
+## If your computer blocks the app
+
+Download only from this repository's [Releases page](https://github.com/ravikadam/promptshelf/releases/latest). These instructions apply to an unverified-developer or reputation warning for that download, not a detected-malware alert.
+
+### Mac: Apple could not verify the app is free of malware
+
+The current build has not been notarized by Apple. If you trust this release and want to open it:
+
+1. Drag **PromptShelf** from the DMG into **Applications**.
+2. Try opening it once, then dismiss the warning.
+3. Open **System Settings → Privacy & Security**.
+4. Scroll down to the PromptShelf warning and select **Open Anyway**.
+5. Authenticate if asked, then confirm **Open**.
+
+This grants an exception for PromptShelf. The option may be unavailable on a managed work computer; ask your administrator in that case. If the message instead says the app is **damaged** or **will harm your computer**, stop and report the exact message rather than using these steps. See [Apple's instructions](https://support.apple.com/en-us/102445).
+
+### Windows: Windows protected your PC
+
+The Windows installer is unsigned. If SmartScreen shows this reputation warning for our downloaded installer, and you trust it, select **More info → Run anyway**, if offered. Confirm the installer name before continuing. If your organisation or Smart App Control blocks it with no option to proceed, ask your administrator or report the message; do not turn off those protections. For background, see [Microsoft's SmartScreen guidance for new apps](https://learn.microsoft.com/en-us/windows/apps/package-and-deploy/publish-first-app#step-6-handle-smartscreen-for-new-apps).
+
+### Linux: permission denied or AppImage will not start
+
+In the folder where you downloaded the file, run:
+
+```sh
+chmod +x PromptShelf-1.0.1-linux-x86_64.AppImage
+./PromptShelf-1.0.1-linux-x86_64.AppImage
+```
+
+For a missing-FUSE error, follow your distribution's FUSE installation instructions. For any other error, [report it](https://github.com/ravikadam/promptshelf/issues) with your distribution and the exact message. Do not disable the Electron sandbox or your computer's security settings.
+
 ## Quick start
 
 1. Open a starter prompt from the middle pane.
@@ -59,6 +90,26 @@ Give one practical example of {{topic}} and three questions to check my understa
 You will get two inputs: `topic` and `audience`. Both occurrences of `{{topic}}` use the same value. Copying stays disabled until every field is filled. Prompts without fields copy directly.
 
 The original template stays unchanged. **Field values are never persisted.** Names are case-sensitive; spaces around a placeholder name are ignored.
+
+### Do I enter the values, or does a program supply them?
+
+**You enter the values yourself in the app. No programming is required.** After creating or editing a template, select **Save prompt**. The saved prompt's **Make it yours** section shows the inputs. Scroll the right pane if they are below the visible area.
+
+For this template:
+
+```text
+Explain {{topic}} for {{audience}}.
+```
+
+Enter `compound interest` in **topic** and `beginners` in **audience**. The preview becomes:
+
+```text
+Explain compound interest for beginners.
+```
+
+Select **Copy prompt**, then paste it into your chosen AI app and send it there. PromptShelf only prepares the text; it does not send prompts or generate AI answers, and it does not fill values automatically.
+
+**Tags and placeholders are different:** the editor's **Tags** field takes organisational labels, such as `learning,finance`, to help you find a prompt. Those tags do not supply template values. To make an editable field, put `{{field_name}}` in the **Prompt template** body. Enter fresh values when you reuse it; field values are not saved.
 
 ## Features
 

@@ -17,6 +17,8 @@ Download the installer for your computer from **Assets** below. GitHub's “Sour
 - **Windows:** Open the `.exe` installer. This build is unsigned, so Windows may show an unknown-publisher or SmartScreen warning. Only proceed if you trust this release.
 - **Linux:** Make the AppImage executable (`chmod +x PromptShelf-1.0.1-linux-x86_64.AppImage`) and launch it. Your distribution may need FUSE support. If sandbox restrictions prevent launch, report your distribution and error; do not disable the sandbox as a workaround.
 
+For step-by-step help when your OS blocks the app, see **[If your computer blocks the app](https://github.com/ravikadam/promptshelf#if-your-computer-blocks-the-app)** in the README.
+
 ### What to try
 
 Open one of the six starter prompts, fill its fields and copy it into your preferred AI tool. You can also create prompts, use favourites and tags, and export/import your library.
